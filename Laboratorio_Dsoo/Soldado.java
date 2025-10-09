@@ -91,6 +91,11 @@ public class Soldado {
             morir();
         }
     }
+    public void moverA(int nuevaFila, int nuevaColumna) {
+    this.fila = nuevaFila;
+    this.columna = nuevaColumna;
+}
+
     public int getVidaActual() {
          return vidaActual; 
         }
@@ -127,6 +132,7 @@ public class Soldado {
         return nombre + " [Ejército=" + ejercito + ", Vida=" + vidaActual +", Atq=" + nivelAtaque +", Def="
          + nivelDefensa +", Actitud=" + actitud +", Vel=" + velocidad +", Pos=(" + fila + "," + columna + ")]";
     }
+   
 }
 
 

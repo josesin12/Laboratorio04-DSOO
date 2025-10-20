@@ -37,9 +37,9 @@ public class Main {
 
 
         while (true) {
-            System.out.println("\n¿Qué soldado desea mover? (o escriba 'salir' para terminar): ");
+            System.out.println("--¿Qué soldado desea mover? (o escriba 'salir' para terminar):--");
             String nombre = sc.nextLine();
-
+        
             if (nombre.equalsIgnoreCase("salir")) break;
 
             Soldado s = ejercitoA.buscarSoldado(nombre);
@@ -50,34 +50,97 @@ public class Main {
                 continue;
             }
 
-            System.out.println("¿Hacia dónde desea mover al soldado? (norte/sur/este/oeste): ");
+            System.out.println("¿Hacia dónde desea mover al soldado? (norte||sur||este||oeste): ");
             String direccion = sc.nextLine().toLowerCase();
-
+            System.out.println("que actitud tendra el soldado? (defensiva/ofensiva/retirada/fuga)");
+            String actitud = sc.nextLine().toLowerCase();
             int nuevaFila = s.getFila();
             int nuevaColumna = s.getColumna();
 
             switch (direccion) {
                 case "norte":
-                    nuevaFila--;
-                    break;
+                    if (actitud.equals("ofensiva")){
+                        nuevaFila-=1;
+                    }
+                    else if (actitud.equals("defensiva")) {
+                        nuevaFila+=0;
+                        System.out.println("El soldado no se movio nada");
+                    }
+                    else if (actitud.equals("retirada")) {
+                        nuevaFila+=2;
+                    }
+                    else if (actitud.equals("fuga")) {
+                        nuevaFila-=2;
+                    }
+                    else{
+                       System.out.println("No existe esa Actitud");
+                    }  
+                    break;          
                 case "sur":
                     nuevaFila++;
+                    if (actitud.equals("ofensiva")){
+                        nuevaFila+=1;
+                    }
+                    else if (actitud.equals("defensiva")) {
+                        nuevaFila+=0;
+                        System.out.println("El soldado no se movio nada");
+                    }
+                    else if (actitud.equals("retirada")) {
+                        nuevaFila-=2;
+                    }
+                    else if (actitud.equals("fuga")) {
+                        nuevaFila+=2;
+                    }
+                    else{
+                       System.out.println("No existe esa Actitud");
+                    }  
                     break;
                 case "este":
                     nuevaColumna++;
+                    if (actitud.equals("ofensiva")){
+                        nuevaColumna+=1;
+                    }
+                    else if (actitud.equals("defensiva")) {
+                        nuevaColumna+=0;
+                        System.out.println("el soldado no se movio nada");
+                    }
+                    else if (actitud.equals("retirada")) {
+                        nuevaColumna-=2;
+                    }
+                    else if (actitud.equals("fuga")) {
+                        nuevaColumna+=2;
+                    }
+                    else{
+                       System.out.println("No existe esa Actitud");
+                    } 
                     break;
                 case "oeste":
                     nuevaColumna--;
+                    if (actitud.equals("ofensiva")){
+                        nuevaColumna-=1;
+                    }
+                    else if (actitud.equals("defensiva")) {
+                        nuevaColumna+=0;
+                        System.out.println("El soldado no se movio nada");
+                    }
+                    else if (actitud.equals("retirada")) {
+                        nuevaColumna+=2;
+                    }
+                    else if (actitud.equals("fuga")) {
+                        nuevaColumna-=2;
+                    }
+                    else{ 
+                       System.out.println("No existe esa Actitud");
+                       break;
+                    } 
                     break;
                 default:
                     System.out.println("Dirección no válida. Intente de nuevo.");
                     continue;
-            }
-
+            }  
             tablero.moverSoldado(s, nuevaFila, nuevaColumna);
             tablero.mostrarTablero();
         }
-
         System.out.println("Juego terminado.");
         sc.close();
     }

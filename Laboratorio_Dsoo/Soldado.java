@@ -99,9 +99,15 @@ public class Soldado {
     public int getVidaActual() {
          return vidaActual; 
         }
+    public void setVidaActual(int vidaActual) {
+     this.vidaActual = vidaActual;
+}   
     public int getNivelVida() {
          return nivelVida; 
         }
+    public void setNivelVida(int nivelVida ) {
+         this.nivelVida = nivelVida;
+    }
     public int getNivelAtaque() { 
         return nivelAtaque; 
     }
@@ -126,6 +132,8 @@ public class Soldado {
     public int getVelocidad() { 
         return velocidad; 
     }
+
+    
 
     @Override
     public String toString() {

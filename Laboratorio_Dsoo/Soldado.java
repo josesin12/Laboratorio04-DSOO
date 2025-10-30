@@ -13,8 +13,8 @@ public class Soldado {
     private int columna;
     private String ejercito; 
     private boolean vive;
-    private String actitud;
-    private int velocidad;
+    protected String actitud;
+    protected int velocidad;
 
     public Soldado(String nombre, String ejercito, int fila, int columna) {
         this.nombre = nombre;
@@ -22,6 +22,19 @@ public class Soldado {
         this.nivelAtaque = random.nextInt(5) + 1;  
         this.nivelDefensa = random.nextInt(5) + 1; 
         this.nivelVida = random.nextInt(5) + 1;    
+        this.vidaActual = nivelVida;
+        this.fila = fila;
+        this.columna = columna;
+        this.vive = true;
+        this.actitud = "defensiva";
+        this.velocidad = 0;
+    }
+    public Soldado(String nombre, String ejercito, int fila, int columna, int minVida, int maxVida) {
+        this.nombre = nombre;
+        this.ejercito = ejercito;
+        this.nivelAtaque = random.nextInt(5) + 1;
+        this.nivelDefensa = random.nextInt(5) + 1;
+        this.nivelVida = random.nextInt(maxVida - minVida + 1) + minVida;
         this.vidaActual = nivelVida;
         this.fila = fila;
         this.columna = columna;
@@ -132,16 +145,19 @@ public class Soldado {
     public int getVelocidad() { 
         return velocidad; 
     }
+    // Método Setter añadido/confirmado en Soldado.java
+    public void setNivelDefensa(int nivelDefensa) { 
+     this.nivelDefensa = nivelDefensa;
+}
 
-    
 
     @Override
     public String toString() {
         return nombre + " [Ejército=" + ejercito + ", Vida=" + vidaActual +", Atq=" + nivelAtaque +", Def="
          + nivelDefensa +", Actitud=" + actitud +", Vel=" + velocidad +", Pos=(" + fila + "," + columna + ")]";
     }
-   
 }
+
 
 
 

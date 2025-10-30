@@ -38,13 +38,14 @@ public class Main {
 
         while (true) {
             System.out.println("--¿Qué soldado desea mover? (o escriba 'salir' para terminar):--");
+            
             String nombre = sc.nextLine();
-        
+            
             if (nombre.equalsIgnoreCase("salir")) break;
 
             Soldado s = ejercitoA.buscarSoldado(nombre);
             if (s == null) s = ejercitoB.buscarSoldado(nombre);
-
+            
             if (s == null) {
                 System.out.println("No se encontró el soldado " + nombre);
                 continue;

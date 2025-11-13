@@ -46,11 +46,11 @@ public class Caballero extends Soldado{
     }
     public void montar() {
         if (!estaVivo()) {
-            System.out.println(getNombre() + " está muerto y no puede montar.");
+            System.out.println(getNombre() + " está muerto y no puede montar");
             return;
         }
         if (this.estaMontando) {
-            System.out.println(getNombre() + " ya está montando.");
+            System.out.println(getNombre() + " ya está montando");
             return;
         }
         
@@ -58,7 +58,7 @@ public class Caballero extends Soldado{
         cambiarArmaA("lanza"); 
         this.actitud = "ofensiva"; 
         this.velocidad = 2; 
-        System.out.println(getNombre() + " ¡MONTA! Cambia a lanza y se prepara para invertir.");
+        System.out.println(getNombre() + " ¡MONTA! Cambia a lanza y se prepara para invertir");
         investir(); 
     }
     public void investir(){
@@ -73,7 +73,7 @@ public class Caballero extends Soldado{
         }
         else{
             veces = 2;
-            System.out.println(getNombre()+" embiste desmontado (x" + veces + " ataques).");
+            System.out.println(getNombre()+" embiste desmontado (x" + veces + " ataques)");
         }
 
     }

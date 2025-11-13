@@ -145,7 +145,7 @@ public class Soldado {
     public int getVelocidad() { 
         return velocidad; 
     }
-    // Método Setter añadido/confirmado en Soldado.java
+
     public void setNivelDefensa(int nivelDefensa) { 
      this.nivelDefensa = nivelDefensa;
 }

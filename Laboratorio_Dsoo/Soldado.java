@@ -149,6 +149,20 @@ public class Soldado {
     public void setNivelDefensa(int nivelDefensa) { 
      this.nivelDefensa = nivelDefensa;
 }
+public void setActitud(String actitud) {
+    this.actitud = actitud;
+    switch (actitud.toLowerCase()) {
+        case "ofensiva":
+        case "fuga":
+        case "retirada":
+            this.velocidad = 2; 
+            break;
+        case "defensiva":
+        default:
+            this.velocidad = 0;
+            break;
+    }
+}
 
 
     @Override

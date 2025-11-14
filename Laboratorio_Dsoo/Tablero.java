@@ -106,4 +106,19 @@ public class Tablero {
     public void moverSoldado(){
         System.out.println();
     }
+    // Necesario para la GUI
+    public int getFilas() {
+        return filas;
+    }
+
+    // Necesario para la GUI
+    public int getColumnas() {
+        return columnas;
+    }
+    public Soldado getSoldado(int fila, int columna) {
+        if (fila < 0 || fila >= filas || columna < 0 || columna >= columnas) {
+            return null;
+        }
+        return tablero[fila][columna];
+    }
 }

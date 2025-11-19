@@ -1,12 +1,9 @@
-// Archivo: PanelTablero.java
-// Archivo: PanelTablero.java
-
 package Laboratorio_Dsoo;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.*;
 
 public class PanelTablero extends JPanel {
     private Juego juego;
@@ -21,7 +18,6 @@ public class PanelTablero extends JPanel {
         setPreferredSize(new Dimension(columnas * CELL_SIZE, filas * CELL_SIZE));
         setBackground(Color.LIGHT_GRAY);
         
-        // Añadir el MouseListener
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -37,7 +33,7 @@ public class PanelTablero extends JPanel {
         int filas = tablero.getFilas();
         int columnas = tablero.getColumnas();
         
-        // 1. Dibujar la cuadrícula
+        // 1. DIBUJAR TABLERO Y UNIDADES
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 g.setColor(Color.WHITE);
@@ -58,8 +54,46 @@ public class PanelTablero extends JPanel {
                 }
             }
         }
+
+        // 2. DIBUJAR INFORMACIÓN DEL MAPA (como en la imagen image_ca8014.png)
+        g.setColor(Color.DARK_GRAY);
+        g.setFont(new Font("SansSerif", Font.BOLD, 14));
+        String infoMapa = "Territorio: " + juego.getMapa().getTipoTerritorio().toUpperCase();
+        g.drawString(infoMapa, 10, 20); // Posición superior izquierda
+
+        // 3. DIBUJAR INFORMACIÓN DEL SOLDADO SELECCIONADO (como en la imagen image_ca8014.png)
+        if (soldadoSeleccionado != null) {
+            // Fondo semitransparente para mejor legibilidad
+            g.setColor(new Color(255, 255, 255, 180));
+            g.fillRect(5, getHeight() - 55, getWidth() - 10, 50);
+
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("SansSerif", Font.BOLD, 12));
+            
+            // Obtener la clase del soldado
+            String tipoClase = soldadoSeleccionado.getClass().getSimpleName();
+            
+            String infoUnidad1 = String.format(
+                "UNIDAD: %s (%s)",
+                soldadoSeleccionado.getNombre(),
+                tipoClase
+            );
+            String infoUnidad2 = String.format(
+                "Vida: %d/%d, Atq: %d, Def: %d, Actitud: %s, Pos: (%d,%d)",
+                soldadoSeleccionado.getVidaActual(),
+                soldadoSeleccionado.getNivelVida(),
+                soldadoSeleccionado.getNivelAtaque(),
+                soldadoSeleccionado.getNivelDefensa(),
+                soldadoSeleccionado.getActitud(),
+                soldadoSeleccionado.getFila(),
+                soldadoSeleccionado.getColumna()
+            );
+
+            g.drawString(infoUnidad1, 10, getHeight() - 35);
+            g.drawString(infoUnidad2, 10, getHeight() - 15);
+        }
         
-        // 3. Mostrar mensaje de fin de juego si aplica
+        // 4. MENSAJE DE GANADOR (Existente)
         if (juego.hayGanador()) {
             g.setColor(new Color(0, 0, 0, 150)); 
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -76,6 +110,7 @@ public class PanelTablero extends JPanel {
     }
 
     private void dibujarSoldado(Graphics g, Soldado s, int fila, int columna) {
+        // ... (CÓDIGO EXISTENTE Y CONCISO) ...
         int x = columna * CELL_SIZE;
         int y = fila * CELL_SIZE;
         Color colorEjercito = s.getEjercito().equals("Inglaterra") ? new Color(200, 50, 50) : new Color(50, 50, 200);
@@ -95,6 +130,8 @@ public class PanelTablero extends JPanel {
         
         g.drawString(etiqueta, etiquetaX, etiquetaY);
     }
+    
+    // ... (El resto del método manejarClick es el mismo) ...
     private void manejarClick(int x, int y) {
         if (juego.hayGanador()) return;
 

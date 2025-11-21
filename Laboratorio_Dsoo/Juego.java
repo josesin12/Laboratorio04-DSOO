@@ -14,7 +14,6 @@ public class Juego {
         this.ejercitoA = mapa.getEjercitoA();
         this.ejercitoB = mapa.getEjercitoB();
         this.turno = 1;
-        // Constructor COMPLETO: Inicializa el primer ejército
         this.ejercitoActual = ejercitoA; 
     }
 
@@ -29,11 +28,8 @@ public class Juego {
     }
 
     public boolean moverSoldado(Soldado s, int nuevaFila, int nuevaColumna) {
-        // Asumiendo que Tablero.moverSoldado maneja el ataque/movimiento
-        boolean movido = tablero.moverSoldado(s, nuevaFila, nuevaColumna);
-        return movido;
+        return tablero.moverSoldado(s, nuevaFila, nuevaColumna);
     }
-    
     
     public Soldado getSoldadoEnPosicion(int fila, int columna) {
         return tablero.getSoldado(fila, columna);
@@ -55,30 +51,11 @@ public class Juego {
         return null;
     }
     
-    public Tablero getTablero() {
-        return tablero;
-    }
-
-    /**
-     * Método getMapa (único): Necesario para que PanelTablero obtenga el tipo de territorio.
-     */
-    public Mapa getMapa() {
-        return mapa;
-    }
-
-    public Ejercito getEjercitoA() {
-        return ejercitoA;
-    }
-
-    public Ejercito getEjercitoB() {
-        return ejercitoB;
-    }
-
-    public int getTurno() {
-        return turno;
-    }
-
-    public Ejercito getEjercitoActual() {
-        return ejercitoActual;
-    }
+    
+    public Tablero getTablero() { return tablero; }
+    public Mapa getMapa() { return mapa; }
+    public Ejercito getEjercitoActual() { return ejercitoActual; }
+    public int getTurno() { return turno; }
+    public Ejercito getEjercitoA() { return ejercitoA; }
+    public Ejercito getEjercitoB() { return ejercitoB; }
 }
